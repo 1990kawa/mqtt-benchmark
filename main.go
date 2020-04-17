@@ -59,7 +59,7 @@ func main() {
 
 	var (
 		broker   = flag.String("broker", "ssl://0.0.0.0:8883", "MQTT broker endpoint as scheme://host:port")
-		topic    = flag.String("topic", "/myplace/integration/user/1/location", "MQTT topic for outgoing messages")
+		topic    = flag.String("topic", "/test", "MQTT topic for outgoing messages")
 		username = flag.String("username", "", "MQTT username (empty if auth disabled)")
 		password = flag.String("password", "", "MQTT password (empty if auth disabled)")
 		qos      = flag.Int("qos", 1, "QoS for published messages")
