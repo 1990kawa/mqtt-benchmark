@@ -1,0 +1,13 @@
+---
+workerNum: 4096
+tlsPort: '8883'
+tlsHost: "0.0.0.0"
+tlsInfo:
+  verify: true
+  caFile: "configs/tls_keys/ca.crt"
+  certFile: "configs/tls_keys/localhost.crt"
+  keyFile: "configs/tls_keys/localhost.key"
+plugins: {}
+apiUrl: "http://0.0.0.0:8080/api/me/location"
+topic: "/myplace/integration/user/+/location"
+

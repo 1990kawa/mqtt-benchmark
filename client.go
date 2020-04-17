@@ -7,6 +7,7 @@ import (
 )
 
 import (
+	"github.com/1990kawa/mqtt-benchmark/config"
 	"github.com/GaryBoone/GoStats/stats"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 )
@@ -119,9 +120,16 @@ func (c *Client) pubMessages(in, out chan *Message, doneGen, donePub chan bool) 
 		}
 	}
 
+	tlsConfig, err := config.NewTLSConfig()
+
+	if err != nil {
+		panic(err)
+	}
+
 	opts := mqtt.NewClientOptions().
 		AddBroker(c.BrokerURL).
 		SetClientID(fmt.Sprintf("mqtt-benchmark-%v-%v", time.Now().Format(time.RFC3339Nano), c.ID)).
+		SetTLSConfig(tlsConfig).
 		SetCleanSession(true).
 		SetAutoReconnect(true).
 		SetOnConnectHandler(onConnected).
